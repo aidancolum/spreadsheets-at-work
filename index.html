@@ -4,41 +4,172 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Practice files for Spreadsheets at Work</title>
+<meta name="description" content="Download the five practice workbooks for the book Spreadsheets at Work by Aidan Colum.">
 <style>
-body{font-family:Georgia,serif;max-width:42rem;margin:2rem auto;padding:0 1rem;line-height:1.6;color:#222}
-h1{font-size:1.6rem}
-h2{font-size:1.2rem;margin-top:2rem}
-li{margin-bottom:1rem}
-code{background:#f2f2f2;padding:0 .25em}
-footer{margin-top:3rem;font-size:.9rem;color:#555;border-top:1px solid #ccc;padding-top:1rem}
+:root{
+  --navy:#1B222E; --navy-2:#252E3D; --peach:#FACFA8; --orange:#E89358;
+  --sand:#EEEAE6; --paper:#FFFFFF; --ink:#1B222E; --muted:#5A6270;
+  --line:#DDD7D0; --chip:#F6F1EC; --btn-ink:#1B222E;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --sand:#0E1219; --paper:#1A212C; --ink:#EEEAE6; --muted:#A9B0BB;
+         --line:#2F3949; --chip:#283142; }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--sand);color:var(--ink);
+  font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+a{color:inherit}
+.wrap{max-width:60rem;margin:0 auto;padding:0 1.25rem}
+
+/* header */
+header{background:var(--navy);color:var(--sand)}
+.hero{display:grid;grid-template-columns:1fr auto;gap:2.5rem;align-items:center;padding-top:3.5rem;padding-bottom:3rem}
+.eyebrow{margin:0 0 .75rem;color:var(--peach);font-size:.8rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+h1{margin:0;font-size:clamp(2rem,5vw,3rem);line-height:1.1;letter-spacing:-.01em;color:#fff}
+.rule{width:4rem;height:4px;background:var(--orange);border-radius:2px;margin:1.25rem 0}
+.lead{margin:0;max-width:34rem;font-size:1.1rem;color:#D9D4CE}
+.lead i{color:#fff}
+.cover{width:170px;border-radius:4px;box-shadow:0 18px 40px rgba(0,0,0,.45);display:block}
+.all{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.75rem;padding:.85rem 1.3rem;
+  background:var(--peach);color:var(--btn-ink);font-weight:700;text-decoration:none;border-radius:8px}
+.all:hover{background:#FFDDBF}
+.all small{font-weight:400;opacity:.75}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:-1.5rem 0 0;padding:0;list-style:none;counter-reset:s}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:1.1rem 1.2rem;counter-increment:s;font-size:.95rem}
+.steps li::before{content:counter(s);display:inline-grid;place-items:center;width:1.7rem;height:1.7rem;margin-bottom:.5rem;
+  border-radius:50%;background:var(--navy);color:var(--peach);font-weight:700;font-size:.85rem}
+@media (prefers-color-scheme: dark){.steps li::before{background:var(--orange);color:var(--navy)}}
+.steps b{display:block;margin-bottom:.15rem}
+
+/* files */
+h2{font-size:1.35rem;margin:3rem 0 1rem}
+.files{display:grid;gap:.85rem;margin:0;padding:0;list-style:none}
+.file{display:grid;grid-template-columns:auto 1fr auto;gap:1.1rem;align-items:center;
+  background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:1.1rem 1.2rem}
+.file.first{border-left:4px solid var(--orange)}
+.icon{width:42px;height:50px;flex:none}
+.name{margin:0;font-weight:700;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.95rem;word-break:break-all}
+.desc{margin:.2rem 0 .5rem;color:var(--muted);font-size:.95rem}
+.meta{display:flex;flex-wrap:wrap;gap:.4rem;font-size:.8rem}
+.chip{background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:.1rem .6rem;color:var(--ink)}
+.tag{background:var(--orange);color:var(--navy);border-color:var(--orange);font-weight:700}
+.dl{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1rem;border-radius:8px;
+  background:var(--navy);color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;white-space:nowrap}
+.dl:hover{background:var(--navy-2)}
+@media (prefers-color-scheme: dark){.dl{background:var(--peach);color:var(--navy)}.dl:hover{background:#FFDDBF}}
+
+/* notes */
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:3rem}
+.note{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.3rem}
+.note h3{margin:0 0 .4rem;font-size:1rem}
+.note p{margin:0;color:var(--muted);font-size:.95rem}
+footer{margin-top:3.5rem;padding:1.75rem 0 2.5rem;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+footer p{margin:.3rem 0}
+
+@media (max-width:720px){
+  body{font-size:16px}
+  .hero{grid-template-columns:1fr;gap:1.25rem;padding-top:2rem;padding-bottom:3rem}
+  .cover{width:96px;height:auto;order:-1}
+  .steps{grid-template-columns:1fr;margin-top:-1.5rem}
+  .file{grid-template-columns:1fr;gap:.9rem}
+  .icon{display:none}
+  .name{font-size:.88rem}
+  .file .dl{grid-column:1 / -1;justify-content:center}
+  .notes{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
-<h1>Practice files for Spreadsheets at Work</h1>
-<p>These five workbooks go with the book <i>Spreadsheets at Work</i> by Aidan Colum. Download them, save a copy of each one before you change anything, and work on the copy.</p>
 
-<h2>The files</h2>
-<ul>
-<li><a href="practice-files/orders_export_RAW.xlsx" download>orders_export_RAW.xlsx</a><br>
-The inherited file: 240 rows of orders straight from a system export, with a merged title and several planted problems. Used in Chapters 1 to 5.</li>
-<li><a href="practice-files/monthly_summary_solution.xlsx" download>monthly_summary_solution.xlsx</a><br>
-The 228 clean orders as a table, plus a Summary sheet to check your own work against. Used from Chapter 2 on, and in Chapters 6 and 9 to 14.</li>
-<li><a href="practice-files/price_list.xlsx" download>price_list.xlsx</a><br>
-Twenty products, SKU-1001 to SKU-1020, for lookups. Used in Chapter 8.</li>
-<li><a href="practice-files/employees_roster.xlsx" download>employees_roster.xlsx</a><br>
-Forty-eight employees and the sales reps, for comparing two lists. Used in Chapter 7.</li>
-<li><a href="practice-files/badge_access_list.xlsx" download>badge_access_list.xlsx</a><br>
-Forty-six names with badge numbers, to compare with the roster. Used in Chapters 4 and 7.</li>
-</ul>
+<header>
+  <div class="wrap hero">
+    <div>
+      <p class="eyebrow">Practice files</p>
+      <h1>Spreadsheets at Work</h1>
+      <div class="rule"></div>
+      <p class="lead">These five workbooks go with the book <i>Spreadsheets at Work</i> by Aidan Colum. Every chapter uses them, so you learn the data once.</p>
+      <a class="all" href="practice-files/spreadsheets-at-work-practice-files.zip" download>
+        Download all five <small>.zip · 60 KB</small>
+      </a>
+    </div>
+    <img class="cover" src="cover.jpg" width="170" height="272" alt="Cover of Spreadsheets at Work by Aidan Colum">
+  </div>
+</header>
 
-<h2>About the data</h2>
-<p>The company is Harbor &amp; Pine Supply Co. It does not exist. All people, customers, companies and amounts in these files are invented for teaching. Any likeness to a real business or person is a coincidence.</p>
+<main class="wrap">
+  <ol class="steps">
+    <li><b>Download</b>All five at once, or one at a time below.</li>
+    <li><b>Save a copy</b>Keep each original untouched and work on the copy.</li>
+    <li><b>Enable editing</b>If a file opens in Protected View, enable editing on your copy.</li>
+  </ol>
 
-<p>The files are teaching material only. They contain no macros. If a file opens in Protected View, choose to enable editing on your copy.</p>
+  <h2>The files</h2>
+  <ul class="files">
+    <li class="file first">
+      <svg class="icon" viewBox="0 0 42 50" aria-hidden="true"><path d="M3 3h26l10 10v34H3z" fill="#EEEAE6" stroke="#1B222E" stroke-width="2"/><path d="M29 3v10h10" fill="none" stroke="#1B222E" stroke-width="2"/><path d="M9 22h24M9 29h24M9 36h24M17 18v24" stroke="#E89358" stroke-width="2"/></svg>
+      <div>
+        <p class="name">orders_export_RAW.xlsx</p>
+        <p class="desc">The inherited file: 240 rows of orders straight from a system export, with a merged title and several planted problems.</p>
+        <div class="meta"><span class="chip tag">Start here</span><span class="chip">Chapters 1–5</span><span class="chip">17 KB</span></div>
+      </div>
+      <a class="dl" href="practice-files/orders_export_RAW.xlsx" download>Download</a>
+    </li>
+    <li class="file">
+      <svg class="icon" viewBox="0 0 42 50" aria-hidden="true"><path d="M3 3h26l10 10v34H3z" fill="#EEEAE6" stroke="#1B222E" stroke-width="2"/><path d="M29 3v10h10" fill="none" stroke="#1B222E" stroke-width="2"/><path d="M9 22h24M9 29h24M9 36h24M17 18v24" stroke="#E89358" stroke-width="2"/></svg>
+      <div>
+        <p class="name">monthly_summary_solution.xlsx</p>
+        <p class="desc">The 228 clean orders as a table, plus a Summary sheet to check your own work against.</p>
+        <div class="meta"><span class="chip">Chapter 2 on, and 6, 9–14</span><span class="chip">22 KB</span></div>
+      </div>
+      <a class="dl" href="practice-files/monthly_summary_solution.xlsx" download>Download</a>
+    </li>
+    <li class="file">
+      <svg class="icon" viewBox="0 0 42 50" aria-hidden="true"><path d="M3 3h26l10 10v34H3z" fill="#EEEAE6" stroke="#1B222E" stroke-width="2"/><path d="M29 3v10h10" fill="none" stroke="#1B222E" stroke-width="2"/><path d="M9 22h24M9 29h24M9 36h24M17 18v24" stroke="#E89358" stroke-width="2"/></svg>
+      <div>
+        <p class="name">employees_roster.xlsx</p>
+        <p class="desc">Forty-eight employees and the sales reps, for comparing two lists.</p>
+        <div class="meta"><span class="chip">Chapter 7</span><span class="chip">9 KB</span></div>
+      </div>
+      <a class="dl" href="practice-files/employees_roster.xlsx" download>Download</a>
+    </li>
+    <li class="file">
+      <svg class="icon" viewBox="0 0 42 50" aria-hidden="true"><path d="M3 3h26l10 10v34H3z" fill="#EEEAE6" stroke="#1B222E" stroke-width="2"/><path d="M29 3v10h10" fill="none" stroke="#1B222E" stroke-width="2"/><path d="M9 22h24M9 29h24M9 36h24M17 18v24" stroke="#E89358" stroke-width="2"/></svg>
+      <div>
+        <p class="name">badge_access_list.xlsx</p>
+        <p class="desc">Forty-six names with badge numbers, to compare with the roster.</p>
+        <div class="meta"><span class="chip">Chapters 4 and 7</span><span class="chip">6 KB</span></div>
+      </div>
+      <a class="dl" href="practice-files/badge_access_list.xlsx" download>Download</a>
+    </li>
+    <li class="file">
+      <svg class="icon" viewBox="0 0 42 50" aria-hidden="true"><path d="M3 3h26l10 10v34H3z" fill="#EEEAE6" stroke="#1B222E" stroke-width="2"/><path d="M29 3v10h10" fill="none" stroke="#1B222E" stroke-width="2"/><path d="M9 22h24M9 29h24M9 36h24M17 18v24" stroke="#E89358" stroke-width="2"/></svg>
+      <div>
+        <p class="name">price_list.xlsx</p>
+        <p class="desc">Twenty products, SKU-1001 to SKU-1020, for lookups.</p>
+        <div class="meta"><span class="chip">Chapter 8</span><span class="chip">6 KB</span></div>
+      </div>
+      <a class="dl" href="practice-files/price_list.xlsx" download>Download</a>
+    </li>
+  </ul>
 
-<footer>
-<p>This page is independent and is not affiliated with, endorsed by or sponsored by Microsoft. Microsoft and Excel are trademarks of the Microsoft group of companies.</p>
-<p>This page does not collect e-mail addresses, use cookies or load scripts from other sites.</p>
-</footer>
+  <div class="notes">
+    <div class="note">
+      <h3>About the data</h3>
+      <p>The company is Harbor &amp; Pine Supply Co. It does not exist. All people, customers, companies and amounts in these files are invented for teaching. Any likeness to a real business or person is a coincidence.</p>
+    </div>
+    <div class="note">
+      <h3>Safe to open</h3>
+      <p>The files are teaching material only. They contain no macros. This page does not collect e-mail addresses, use cookies or load scripts from other sites.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>This page is independent and is not affiliated with, endorsed by or sponsored by Microsoft. Microsoft and Excel are trademarks of the Microsoft group of companies.</p>
+  </footer>
+</main>
+
 </body>
 </html>
