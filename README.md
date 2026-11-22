@@ -1,6 +1,6 @@
 # Spreadsheets at Work: practice files
 
-The practice workbooks for the book Spreadsheets at Work by Aidan Colum.
+The practice workbooks for the book Spreadsheets at Work by Ian Macloud.
 
 Download page: https://aidancolum.github.io/spreadsheets-at-work/
 
